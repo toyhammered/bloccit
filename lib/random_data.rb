@@ -28,6 +28,11 @@ module RandomData
 	end
 
 
+	def random_number
+		rand(1..100).to_i
+	end
+
+
 
 
 end # end of RandomData module
