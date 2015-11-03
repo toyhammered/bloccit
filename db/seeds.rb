@@ -42,10 +42,18 @@ posts = Post.all
     )
 end
 
-# Adding my own email to database
-user = User.first
-user.update_attributes!(
-  email: 'daniel@rassiner.com',
+# Create an admin user
+admin = User.create!(
+  name:     'Admin User',
+  email:    'admin@example.com',
+  password: 'helloworld',
+  role:     'admin'
+)
+
+# Create a member user
+member = User.create!(
+  name:     'Member User',
+  email:    'member@example.com',
   password: 'helloworld'
 )
 
