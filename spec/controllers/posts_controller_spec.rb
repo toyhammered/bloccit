@@ -258,6 +258,16 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+
+  context "moderator user doing CRUD on a post they don't own" do
+    
+  end
+
+
+
+
+
+
   context "admin user doing CRUD on a post they don't own" do
     before do
       other_user.admin!

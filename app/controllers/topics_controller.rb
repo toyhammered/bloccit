@@ -1,7 +1,11 @@
 class TopicsController < ApplicationController
-
+  # except means not for these actions
+  # only means for these specific actions
   before_action :require_sign_in, except: [:index, :show]
-  before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authorize_moderator, only: [:new, :create, :destroy]
+  # before_action :authorize_admin, only: [:destroy]
+
 
   def index
     @topics = Topic.all
@@ -62,6 +66,20 @@ class TopicsController < ApplicationController
     end
 
     def authorize_user
+      unless current_user.moderator? || current_user.admin?
+        flash[:error] = "you must be a moderator or admin to do that."
+        redirect_to topics_path
+      end
+    end
+
+    def authorize_moderator
+      unless current_user.moderator? || current_user.admin?
+        flash[:error] = "you must be a moderator or admin to do that."
+        redirect_to topics_path
+      end
+    end
+
+    def authorize_admin
       unless current_user.admin?
         flash[:error] = "you must be an admin to do that."
         redirect_to topics_path
