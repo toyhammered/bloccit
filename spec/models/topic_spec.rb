@@ -8,6 +8,8 @@ RSpec.describe Topic, type: :model do
   it { should have_many(:posts) }
   it { should have_many(:labelings) }
   it { should have_many(:labels).through(:labelings) }
+  it { should have_many(:ratingables) }
+  it { should have_many(:ratings).through(:ratingables) }
 
   describe "attributes" do
     it "should respond to name" do

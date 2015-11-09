@@ -3,6 +3,7 @@ class CreateLabelings < ActiveRecord::Migration
     create_table :labelings do |t|
       t.integer :label_id
       t.integer :topic_id
+
       t.references :label, index: true
       t.references :topic, index: true
       t.references :post, index: true
