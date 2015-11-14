@@ -1,0 +1,4 @@
+You just created a new post: "<%= @post.title %> and are automatically going to be following it"
+<%= "=" * (@post.title.length + 12) %>
+
+Visit online at: <%= topic_post_url(@post.topic, @post) %>
