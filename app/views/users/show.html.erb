@@ -20,8 +20,14 @@
   </div>
 </div>
 
+<% if check_user_post %>
 <h2>Posts</h2>
 <%= render @user.posts %>
 
 <h2>Comments</h2>
 <%= render @user.comments %>
+<% else %>
+  <p><%= @user.name %> has not submitted any posts yet</p>
+<% end %>
+
+<h2>Favorited Posts</h2>

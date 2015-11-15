@@ -7,7 +7,7 @@ RSpec.describe Post, type: :model do
   let(:topic) { create(:topic) }
   let(:user) { create(:user) }
   let(:post) { create(:post) }
-  
+
   it { should have_many(:labelings) }
   it { should have_many(:labels).through(:labelings) }
 
